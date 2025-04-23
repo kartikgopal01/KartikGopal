@@ -391,7 +391,7 @@ export const HeroContent = styled.div`
   position: relative;
   z-index: 1;
   max-width: 800px;
-  animation: ${fadeIn} 1s ease forwards;
+  animation: ${fadeIn} 1s ease forwards;  
 `;
 
 export const HeroTitle = styled.h1`

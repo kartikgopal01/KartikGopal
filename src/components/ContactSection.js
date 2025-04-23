@@ -11,6 +11,7 @@ import {
 } from './StyledComponents';
 import styled from 'styled-components';
 import ButtonWrapper from './ButtonWrapper';
+import AnimatedCard from './AnimatedCard';
 
 const ContactContainer = styled.div`
   display: flex;
@@ -27,19 +28,30 @@ const ContactInfo = styled.div`
   gap: 3rem;
   margin-top: 2rem;
   flex-wrap: wrap;
+  width: 100%;
+  
+  & > div {
+    width: 250px;
+    height: 180px;
+  }
   
   @media (max-width: 768px) {
-    gap: 1.5rem;
+    gap: 2rem;
+    
+    & > div {
+      width: 100%;
+      max-width: 300px;
+      height: 160px;
+    }
   }
 `;
 
-const ContactCard = styled(Card)`
+const ContactCardContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
-  width: 200px;
+  height: 100%;
   
   svg {
     width: 40px;
@@ -154,15 +166,13 @@ const ContactSection = () => {
         >
           <ContactInfo>
             {contactInfo.map((item, index) => (
-              <GlassCard 
-                key={index}
-                whileHover={{ y: -10 }}
-                transition={{ duration: 0.3 }}
-              >
-                {item.icon}
-                <h3>{item.title}</h3>
-                <p>{item.info}</p>
-              </GlassCard>
+              <AnimatedCard key={index}>
+                <ContactCardContent>
+                  {item.icon}
+                  <h3>{item.title}</h3>
+                  <p>{item.info}</p>
+                </ContactCardContent>
+              </AnimatedCard>
             ))}
           </ContactInfo>
         </motion.div>

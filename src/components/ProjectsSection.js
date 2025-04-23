@@ -2,12 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   Section, 
-  Grid, 
-  ProjectCard,
-  Button
+  Grid,
+  ProjectCard
 } from './StyledComponents';
 import styled from 'styled-components';
 import ButtonWrapper from './ButtonWrapper';
+import AnimatedCard from './AnimatedCard';
 
 const ProjectsContainer = styled.div`
   display: flex;
@@ -139,39 +139,36 @@ const ProjectsSection = () => {
           <Grid>
             {projects.map((project, index) => (
               <motion.div key={index} variants={itemVariants}>
-                <ProjectCard
-                  whileHover={{ 
-                    y: -10,
-                    transition: { duration: 0.3 }
-                  }}
-                >
-                  <div 
-                    className="project-image" 
-                    style={{ backgroundImage: `url(${project.image})` }}
-                  />
-                  <h3>
-                    {project.title}
-                    {project.isHosted && <LiveBadge>LIVE</LiveBadge>}
-                  </h3>
-                  <p>{project.description}</p>
-                  
-                  <div className="tech-stack">
-                    {project.tags.map((tag, tagIndex) => (
-                      <span className="tech-tag" key={tagIndex}>{tag}</span>
-                    ))}
-                  </div>
-                  
-                  <div className="links">
-                    <ButtonWrapper 
-                      as="a" 
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {project.isHosted ? 'View Live Project' : 'View Project'}
-                    </ButtonWrapper>
-                  </div>
-                </ProjectCard>
+                <AnimatedCard>
+                  <ProjectContent>
+                    <div 
+                      className="project-image" 
+                      style={{ backgroundImage: `url(${project.image})` }}
+                    />
+                    <h3>
+                      {project.title}
+                      {project.isHosted && <LiveBadge>LIVE</LiveBadge>}
+                    </h3>
+                    <p>{project.description}</p>
+                    
+                    <div className="tech-stack">
+                      {project.tags.map((tag, tagIndex) => (
+                        <span className="tech-tag" key={tagIndex}>{tag}</span>
+                      ))}
+                    </div>
+                    
+                    <div className="links">
+                      <ButtonWrapper 
+                        as="a" 
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {project.isHosted ? 'View Live Project' : 'View Project'}
+                      </ButtonWrapper>
+                    </div>
+                  </ProjectContent>
+                </AnimatedCard>
               </motion.div>
             ))}
           </Grid>
@@ -180,5 +177,125 @@ const ProjectsSection = () => {
     </Section>
   );
 };
+
+// New styled component for project content inside the AnimatedCard
+const ProjectContent = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  
+  .project-image {
+    width: 100%;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+    width: calc(100% + 3rem);
+    position: relative;
+    transition: all 0.5s ease;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+      opacity: 0.6;
+      transition: opacity 0.5s ease;
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--accent);
+      opacity: 0;
+      mix-blend-mode: overlay;
+      transition: opacity 0.5s ease;
+      z-index: 1;
+    }
+  }
+  
+  &:hover .project-image {
+    transform: scale(1.05);
+    
+    &::before {
+      opacity: 0.2;
+    }
+    
+    &::after {
+      opacity: 0.8;
+    }
+  }
+  
+  h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+  }
+  
+  &:hover h3::after {
+    width: 100%;
+  }
+  
+  p {
+    color: var(--textSecondary);
+    margin-bottom: 1.5rem;
+    line-height: a1.6;
+  }
+  
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tech-tag {
+    font-size: 0.75rem;
+    background: var(--backgroundSecondary);
+    color: var(--accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      background: var(--accent);
+      color: white;
+    }
+  }
+  
+  .links {
+    margin-top: auto;
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;
+  }
+`;
 
 export default ProjectsSection;
