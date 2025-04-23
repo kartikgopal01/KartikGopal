@@ -1,3 +1,28 @@
+/* Add CSS root variables for RGB values */
+:root {
+  --backgroundRGB: 18, 18, 18;
+  --textRGB: 255, 255, 255;
+  --accentRGB: 120, 85, 245;
+  --accent2RGB: 245, 85, 150;
+  --cardBackgroundRGB: 30, 30, 30;
+  --textSecondaryRGB: 200, 200, 200;
+  --backgroundSecondaryRGB: 25, 25, 25;
+  --gridColor: 255, 255, 255;
+  --dotsColor: 255, 255, 255;
+}
+
+body[data-theme="light"] {
+  --backgroundRGB: 250, 250, 250;
+  --textRGB: 30, 30, 30;
+  --accentRGB: 100, 65, 225;
+  --accent2RGB: 225, 65, 130;
+  --cardBackgroundRGB: 255, 255, 255;
+  --textSecondaryRGB: 80, 80, 80;
+  --backgroundSecondaryRGB: 240, 240, 240;
+  --gridColor: 0, 0, 0;
+  --dotsColor: 0, 0, 0;
+}
+
 .App {
   text-align: center;
 }
