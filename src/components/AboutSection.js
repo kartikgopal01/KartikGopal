@@ -258,17 +258,17 @@ const AboutSection = () => {
         
         <StatsContainer>
           <StatItem ref={el => statsRef.current[0] = el}>
-            <div className="number">5+</div>
+            <div className="number">1+</div>
             <div className="label">Years Experience</div>
           </StatItem>
           
           <StatItem ref={el => statsRef.current[1] = el}>
-            <div className="number">20+</div>
+            <div className="number">15+</div>
             <div className="label">Projects Completed</div>
           </StatItem>
           
           <StatItem ref={el => statsRef.current[2] = el}>
-            <div className="number">15+</div>
+            <div className="number">7+</div>
             <div className="label">AI Models Integrated</div>
           </StatItem>
         </StatsContainer>

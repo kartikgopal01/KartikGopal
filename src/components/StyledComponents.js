@@ -517,17 +517,7 @@ export const ProjectCard = styled(Card)`
     }
   }
   
-  &:hover .project-image {
-    transform: scale(1.05);
-    
-    &::before {
-      opacity: 0.2;
-    }
-    
-    &::after {
-      opacity: 0.8;
-    }
-  }
+  
   
   h3 {
     margin-bottom: 1rem;

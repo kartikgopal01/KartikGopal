@@ -70,7 +70,7 @@ const ProjectsSection = () => {
     {
       title: 'InterviewPrep AI',
       description: 'Advanced AI-powered interview preparation platform utilizing Llama 3.3 70B for realistic technical and behavioral interviews with personalized feedback.',
-      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+      image: './images/image.png',
       tags: ['Next.js', 'TypeScript', 'Firebase', 'AI/ML', 'Tailwind'],
       link: 'https://interview-prep-green.vercel.app/',
       isHosted: true
@@ -78,7 +78,7 @@ const ProjectsSection = () => {
     {
       title: 'AI Medical Bot',
       description: 'Interactive medical assistant combining vision and voice capabilities to analyze medical images and respond to voice queries as a professional doctor.',
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+      image: './images/doctor.png',
       tags: ['Python', 'AI/ML', 'Voice Processing', 'Image Analysis'],
       link: 'https://github.com/kartikgopal01/AI_MEDICAL_BOT',
       isHosted: false
@@ -86,15 +86,15 @@ const ProjectsSection = () => {
     {
       title: 'Event Booking Platform',
       description: 'Comprehensive event management and booking platform with real-time availability, payment processing, and user management system.',
-      image: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+      image: './images/event.png',
       tags: ['React', 'Next.js', 'Payment Integration', 'UI/UX'],
-      link: 'https://event-book-demo.vercel.app/',
+      link: 'https://nampartycelebrations.vercel.app/',
       isHosted: true
     },
     {
       title: 'Student Data Management',
       description: 'Comprehensive system for managing student records, attendance, grades, and academic performance with secure authentication.',
-      image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+      image: './images/sd.png',
       tags: ['PHP', 'MySQL', 'Bootstrap', 'jQuery'],
       link: 'https://github.com/kartikgopal01/student-data-management',
       isHosted: false
@@ -102,7 +102,7 @@ const ProjectsSection = () => {
     {
       title: 'Charity Fund Raiser Management',
       description: 'Platform for organizing charity events, tracking donations, and managing fundraising campaigns with real-time analytics.',
-      image: 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+      image: './images/di.png',
       tags: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap'],
       link: 'https://github.com/kartikgopal01/charity-fund-raiser-management',
       isHosted: false
@@ -110,7 +110,7 @@ const ProjectsSection = () => {
     {
       title: 'Task Management Dashboard',
       description: 'Modern task management solution with drag-and-drop interface, priority-based sorting, and productivity analytics.',
-      image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2072&q=80',
+      image: './images/tm.png',
       tags: ['JavaScript', 'React', 'Node.js', 'Express'],
       link: 'https://github.com/kartikgopal01/Task_Management_Dashboard',
       isHosted: false
@@ -223,17 +223,7 @@ const ProjectContent = styled.div`
     }
   }
   
-  &:hover .project-image {
-    transform: scale(1.05);
-    
-    &::before {
-      opacity: 0.2;
-    }
-    
-    &::after {
-      opacity: 0.8;
-    }
-  }
+ 
   
   h3 {
     margin-bottom: 1rem;
