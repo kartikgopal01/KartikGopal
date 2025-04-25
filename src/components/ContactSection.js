@@ -92,7 +92,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  width: 100%;
+  width: 75vw;
   max-width: 600px;
   margin-top: 3rem;
 `;
@@ -185,22 +185,22 @@ const ContactSection = () => {
         >
           <Form onSubmit={handleSubmit}>
             <FormGroup>
-              <label htmlFor="name">Name</label>
+              
               <Input type="text" id="name" placeholder="Your Name" required />
             </FormGroup>
             
             <FormGroup>
-              <label htmlFor="email">Email</label>
+              
               <Input type="email" id="email" placeholder="Your Email" required />
             </FormGroup>
             
             <FormGroup>
-              <label htmlFor="subject">Subject</label>
+              
               <Input type="text" id="subject" placeholder="Subject" />
             </FormGroup>
             
             <FormGroup>
-              <label htmlFor="message">Message</label>
+              
               <TextArea id="message" placeholder="Your Message" required rows="6"></TextArea>
             </FormGroup>
             
