@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { ThemeContext } from '../contexts/ThemeContext';
 import { Nav, NavLinks, NavLink, MenuToggle, Logo } from './StyledComponents';
 import styled from 'styled-components';
@@ -108,28 +108,53 @@ const Navbar = () => {
   };
   
   // Update active link based on scroll position
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "projects", "contact"];
-      const scrollPosition = window.scrollY + 300; // Add offset
+      const sections = ["home", "about", "work", "projects", "contact"];
+      const scrollPosition = window.scrollY + 200; // Reduced offset for better detection
       
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetBottom = offsetTop + element.offsetHeight;
-          
-          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-            setActiveLink(section);
-            break;
-          }
+      // Find all section elements
+      const sectionElements = sections.map(id => ({
+        id,
+        element: document.getElementById(id)
+      })).filter(item => item.element !== null);
+      
+      // Sort by position on page to handle overlaps correctly
+      sectionElements.sort((a, b) => {
+        return a.element.offsetTop - b.element.offsetTop;
+      });
+      
+      // Find the current active section
+      let currentSection = sectionElements[0]?.id || "home";
+      
+      for (const { id, element } of sectionElements) {
+        const offsetTop = element.offsetTop - 100; // Offset for navbar height
+        const offsetBottom = offsetTop + element.offsetHeight;
+        
+        if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+          currentSection = id;
+          break;
         }
+      }
+      
+      // Only update if changed to avoid unnecessary rerenders
+      if (currentSection !== activeLink) {
+        setActiveLink(currentSection);
       }
     };
     
     window.addEventListener("scroll", handleScroll);
+    // Initial call to set the correct active link on load
+    setTimeout(handleScroll, 100);
+    
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [activeLink]);
+  
+  // Manually handle clicks for more immediate feedback
+  const handleNavClick = (id) => {
+    closeMenu();
+    setActiveLink(id.substring(1)); // Remove the # from the id
+  };
   
   return (
     <Nav>
@@ -157,10 +182,11 @@ const Navbar = () => {
           style={{ display: "flex", gap: "2rem", alignItems: "center" }}
           className="nav-container"
         >
-          <NavItem href="#home" onClick={closeMenu} isActive={activeLink === 'home'}>Home</NavItem>
-          <NavItem href="#about" onClick={closeMenu} isActive={activeLink === 'about'}>About</NavItem>
-          <NavItem href="#projects" onClick={closeMenu} isActive={activeLink === 'projects'}>Projects</NavItem>
-          <NavItem href="#contact" onClick={closeMenu} isActive={activeLink === 'contact'}>Contact</NavItem>
+          <NavItem href="#home" onClick={() => handleNavClick("#home")} isActive={activeLink === 'home'}>Home</NavItem>
+          <NavItem href="#about" onClick={() => handleNavClick("#about")} isActive={activeLink === 'about'}>About</NavItem>
+          <NavItem href="#work" onClick={() => handleNavClick("#work")} isActive={activeLink === 'work'}>My Work</NavItem>
+          <NavItem href="#projects" onClick={() => handleNavClick("#projects")} isActive={activeLink === 'projects'}>Projects</NavItem>
+          <NavItem href="#contact" onClick={() => handleNavClick("#contact")} isActive={activeLink === 'contact'}>Contact</NavItem>
           <motion.div variants={navItemVariants}>
             <ThemeToggle />
           </motion.div>

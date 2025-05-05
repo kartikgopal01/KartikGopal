@@ -114,9 +114,10 @@ const TypeWriter = ({ texts }) => {
 
 const HeroSectionComponent = () => {
   const typingTexts = [
-    "Building modern React applications",
-    "Frontend developer with React expertise",
-    "Creating responsive web experiences"
+    "Building full-stack web applications",
+    "Crafting scalable backend solutions",
+    "Creating beautiful frontend experiences",
+    "Specializing in MERN stack development"
   ];
 
   return (
@@ -135,14 +136,15 @@ const HeroSectionComponent = () => {
             <HeroTitle>
               Hi, I'm <Highlight>Kartik Gopal</Highlight>
               <br />
-              React Developer
+              Full-Stack Developer
             </HeroTitle>
           </motion.div>
           
           <motion.div variants={itemVariants}>
             <HeroSubtitle>
-              I design and build modern, high-performing web applications with React
-              and related technologies, focusing on clean code and exceptional user experiences.
+              I architect and build complete web applications from database to UI, specializing
+              in React, Node.js, and cloud technologies to create scalable, high-performance 
+              solutions with exceptional user experiences.
             </HeroSubtitle>
           </motion.div>
           

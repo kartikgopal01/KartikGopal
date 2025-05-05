@@ -192,8 +192,17 @@ const AboutSection = () => {
   
   const skills = [
     {
-      title: 'AI/ML Development',
-      description: 'Building cutting-edge AI solutions including LLM integrations, voice processing, and intelligent data analysis',
+      title: 'Backend Development',
+      description: 'Building robust server-side applications with Node.js, Express, MongoDB, PostgreSQL, and implementing RESTful APIs and GraphQL endpoints',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+        </svg>
+      )
+    },
+    {
+      title: 'Frontend Development',
+      description: 'Creating responsive, interactive user interfaces with React, Next.js, Redux, and modern CSS techniques including Styled Components',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -201,17 +210,8 @@ const AboutSection = () => {
       )
     },
     {
-      title: 'Full Stack Development',
-      description: 'Creating comprehensive web applications with modern frameworks like React, Next.js, and Node.js',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      )
-    },
-    {
-      title: 'Cloud & Firebase',
-      description: 'Implementing scalable backend solutions with Firebase, authentication systems, and database integrations',
+      title: 'DevOps & Cloud',
+      description: 'Deploying and managing applications on AWS, Firebase, and Heroku with CI/CD pipelines, containerization, and infrastructure as code',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
@@ -233,7 +233,7 @@ const AboutSection = () => {
         </motion.div>
         
         <AboutContent ref={contentRef}>
-          I'm <Highlight>Kartik Gopal</Highlight>, a developer specializing in building modern web applications and AI solutions. With a passion for creating intuitive user experiences and intelligent software, I focus on combining the latest front-end technologies with advanced AI capabilities.
+          I'm <Highlight>Kartik Gopal</Highlight>, a full-stack developer with expertise in both frontend and backend technologies. With a passion for building complete, scalable web applications, I specialize in the MERN stack (MongoDB, Express, React, Node.js) and related technologies. My experience spans from database design and API development to creating intuitive user interfaces and deploying applications to the cloud.
         </AboutContent>
         
         <AccentLine ref={accentLineRef} />
@@ -268,8 +268,8 @@ const AboutSection = () => {
           </StatItem>
           
           <StatItem ref={el => statsRef.current[2] = el}>
-            <div className="number">7+</div>
-            <div className="label">AI Models Integrated</div>
+            <div className="number">2+</div>
+            <div className="label">Satisfied Clients</div>
           </StatItem>
         </StatsContainer>
       </AboutContainer>
