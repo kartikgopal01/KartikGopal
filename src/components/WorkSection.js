@@ -287,7 +287,7 @@ const WorkSection = () => {
               whileHover="hover"
             >
               <WorkTitle>Habba Events</WorkTitle>
-              <WorkDate>2022 - Present</WorkDate>
+              <WorkDate>2025 - Present</WorkDate>
               <WorkDescription>
                 Developed a comprehensive event management platform for Habba Events, enabling
                 seamless organization, promotion, and ticketing for cultural and corporate events.
@@ -339,7 +339,7 @@ const WorkSection = () => {
               whileHover="hover"
             >
               <WorkTitle>NAM Party Celebrations</WorkTitle>
-              <WorkDate>2021 - 2023</WorkDate>
+              <WorkDate>2025 - Present</WorkDate>
               <WorkDescription>
                 Designed and developed a party planning and events website for NAM Party Celebrations,
                 focusing on creating an engaging user experience that showcases their services and
