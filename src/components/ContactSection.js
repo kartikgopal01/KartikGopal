@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import { 
   Section, 
   Card,
@@ -12,6 +13,10 @@ import {
 import styled from 'styled-components';
 import ButtonWrapper from './ButtonWrapper';
 import AnimatedCard from './AnimatedCard';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 const ContactContainer = styled.div`
   display: flex;
@@ -97,11 +102,64 @@ const Form = styled.form`
   margin-top: 3rem;
 `;
 
+const FormStatus = styled.div`
+  margin-top: 1rem;
+  padding: 0.75rem;
+  text-align: center;
+  border-radius: 5px;
+  
+  &.success {
+    background-color: rgba(0, 200, 83, 0.1);
+    color: #00c853;
+  }
+  
+  &.error {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: #f44336;
+  }
+`;
+
 const ContactSection = () => {
+  const formRef = useRef(null);
+  const [formStatus, setFormStatus] = useState({ message: '', type: '' });
+  const [loading, setLoading] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Form submission logic would go here
-    alert('Form submitted! (This is just a demo)');
+    setLoading(true);
+    
+    const serviceId = 'service_024b17d';
+    const templateId = 'template_ubvqqho';
+    const publicKey = '4wzf0CaZNJIcv4NXn';
+    
+    emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
+      .then((result) => {
+        setFormStatus({
+          message: 'Your message has been sent successfully!',
+          type: 'success'
+        });
+        setOpenSnackbar(true);
+        formRef.current.reset();
+      })
+      .catch((error) => {
+        console.error('EmailJS error:', error);
+        setFormStatus({
+          message: 'Failed to send message. Please try again later.',
+          type: 'error'
+        });
+        setOpenSnackbar(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const contactInfo = [
@@ -183,35 +241,76 @@ const ContactSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Form onSubmit={handleSubmit}>
+          <Form ref={formRef} onSubmit={handleSubmit}>
             <FormGroup>
-              
-              <Input type="text" id="name" placeholder="Your Name" required />
+              <Input 
+                type="text" 
+                id="name" 
+                name="user_name" 
+                placeholder="Your Name" 
+                required 
+              />
             </FormGroup>
             
             <FormGroup>
-              
-              <Input type="email" id="email" placeholder="Your Email" required />
+              <Input 
+                type="email" 
+                id="email" 
+                name="user_email" 
+                placeholder="Your Email" 
+                required 
+              />
             </FormGroup>
             
             <FormGroup>
-              
-              <Input type="text" id="subject" placeholder="Subject" />
+              <Input 
+                type="text" 
+                id="subject" 
+                name="subject" 
+                placeholder="Subject" 
+              />
             </FormGroup>
             
             <FormGroup>
-              
-              <TextArea id="message" placeholder="Your Message" required rows="6"></TextArea>
+              <TextArea 
+                id="message" 
+                name="message" 
+                placeholder="Your Message" 
+                required 
+                rows="6"
+              ></TextArea>
             </FormGroup>
             
             <ButtonWrapper 
               type="submit"
+              disabled={loading}
             >
-              Send Message
+              {loading ? 'Sending...' : 'Send Message'}
             </ButtonWrapper>
           </Form>
         </motion.div>
       </ContactContainer>
+
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={formStatus.type}
+          variant="filled"
+          icon={formStatus.type === 'success' ? <CheckCircleOutlineIcon /> : <ErrorOutlineIcon />}
+          sx={{ 
+            width: '100%',
+            fontWeight: '500',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+          }}
+        >
+          {formStatus.message}
+        </Alert>
+      </Snackbar>
     </Section>
   );
 };
