@@ -71,8 +71,24 @@ const ProjectsSection = () => {
       title: 'InterviewPrep AI',
       description: 'Advanced AI-powered interview preparation platform utilizing Llama 3.3 70B for realistic technical and behavioral interviews with personalized feedback.',
       image: './images/image.png',
-      tags: ['Next.js', 'TypeScript', 'Firebase', 'AI/ML', 'Tailwind'],
+      tags: ['Next.js', 'TypeScript', 'Firebase','Vapi','Vercel', 'AI/ML', 'Tailwind'],
       link: 'https://interview-prep-green.vercel.app/',
+      isHosted: true
+    },
+    {
+      title: 'Cognito AI',
+      description: 'Learning platform for students that integrates AI to provide personalized learning experiences and resources with voice assistance.',
+      image: './images/cognito.png',
+      tags: ['Next.js', 'TypeScript', 'Supabase','Vapi','Clerk','Vercel', 'AI/ML', 'Tailwind'],
+      link: 'https://cognito-xo.vercel.app/',
+      isHosted: true
+    },
+    {
+      title: 'Namparty Celebrations',
+      description: 'Comprehensive event management and booking platform with real-time availability, payment processing, and user management system.',
+      image: './images/event.png',
+      tags: ['React', 'Next.js', 'Payment Integration', 'UI/UX'],
+      link: 'https://nampartycelebrations.com',
       isHosted: true
     },
     {
@@ -83,14 +99,7 @@ const ProjectsSection = () => {
       link: 'https://github.com/kartikgopal01/AI_MEDICAL_BOT',
       isHosted: false
     },
-    {
-      title: 'Event Booking Platform',
-      description: 'Comprehensive event management and booking platform with real-time availability, payment processing, and user management system.',
-      image: './images/event.png',
-      tags: ['React', 'Next.js', 'Payment Integration', 'UI/UX'],
-      link: 'https://nampartycelebrations.vercel.app/',
-      isHosted: true
-    },
+   
     {
       title: 'Student Data Management',
       description: 'Comprehensive system for managing student records, attendance, grades, and academic performance with secure authentication.',
@@ -107,14 +116,7 @@ const ProjectsSection = () => {
       link: 'https://github.com/kartikgopal01/charity-fund-raiser-management',
       isHosted: false
     },
-    {
-      title: 'Task Management Dashboard',
-      description: 'Modern task management solution with drag-and-drop interface, priority-based sorting, and productivity analytics.',
-      image: './images/tm.png',
-      tags: ['JavaScript', 'React', 'Node.js', 'Express'],
-      link: 'https://github.com/kartikgopal01/Task_Management_Dashboard',
-      isHosted: false
-    }
+    
   ];
 
   return (
@@ -126,7 +128,7 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <SectionTitle>Projects</SectionTitle>
+          <SectionTitle>MajorProjects</SectionTitle>
         </motion.div>
         
         <motion.div

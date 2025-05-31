@@ -269,7 +269,7 @@ const WorkSection = () => {
         transition={{ duration: 0.5 }}
         viewport={{ once: true, amount: 0.2 }}
       >
-        <SectionTitle>My Work</SectionTitle>
+        <SectionTitle>My Works</SectionTitle>
         <SectionSubtitle>Projects I've worked on throughout my journey</SectionSubtitle>
       </motion.div>
       
@@ -331,6 +331,7 @@ const WorkSection = () => {
               </div>
             </WorkCard>
           </WorkItem>
+
           
           <WorkItem variants={itemVariants}>
             <TimelineNode variants={nodeVariants}>2</TimelineNode>
@@ -368,6 +369,55 @@ const WorkSection = () => {
               <div style={{ marginTop: "1.5rem" }}>
                 <WorkLink 
                   href="https://nampartycelebrations.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  variants={linkVariants}
+                  initial="hidden"
+                  animate="visible"
+                  whileHover="hover"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  Visit Website
+                </WorkLink>
+              </div>
+            </WorkCard>
+          </WorkItem>
+
+          <WorkItem variants={itemVariants}>
+            <TimelineNode variants={nodeVariants}>3</TimelineNode>
+            <WorkCard
+              variants={cardVariants}
+              whileHover="hover"
+            >
+              <WorkTitle>Lion Logistic</WorkTitle>
+              <WorkDate>2025 - Present</WorkDate>
+              <WorkDescription>
+                Designed and developed a fully responsive and user-centric website for Lion Logistic, ensuring a smooth and intuitive experience for their customers. The website's modern design and streamlined navigation enable users to easily access information and services, enhancing their overall interaction with the company.
+              </WorkDescription>
+              <WorkTechStack>
+                {['HTML', 'CSS', 'JavaScript','Hostinger','Github'].map((tech, index) => (
+                  <TechTag 
+                    key={index}
+                    variants={techTagVariants}
+                    initial="hidden"
+                    animate="visible"
+                    whileHover="hover"
+                    transition={{ delay: index * 0.1 }}
+                    onMouseEnter={() => setHoveredTag(tech)}
+                    onMouseLeave={() => setHoveredTag(null)}
+                    style={{ 
+                      backgroundColor: hoveredTag === tech ? 'rgba(var(--accentRGB), 0.2)' : 'rgba(var(--accentRGB), 0.1)',
+                    }}
+                  >
+                    {tech}
+                  </TechTag>
+                ))}
+              </WorkTechStack>
+              <div style={{ marginTop: "1.5rem" }}>
+                <WorkLink 
+                  href="https://lionlogistic.in/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   variants={linkVariants}

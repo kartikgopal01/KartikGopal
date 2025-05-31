@@ -268,7 +268,7 @@ const AboutSection = () => {
           </StatItem>
           
           <StatItem ref={el => statsRef.current[2] = el}>
-            <div className="number">2+</div>
+            <div className="number">3+</div>
             <div className="label">Satisfied Clients</div>
           </StatItem>
         </StatsContainer>
