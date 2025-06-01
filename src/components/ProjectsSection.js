@@ -128,7 +128,7 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <SectionTitle>MajorProjects</SectionTitle>
+          <SectionTitle>Major Projects</SectionTitle>
         </motion.div>
         
         <motion.div
